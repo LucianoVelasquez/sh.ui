@@ -1,7 +1,7 @@
 /* 'use client'
-import CardD from "@/Components/DashBoard/cardD";
-import { BarListUsage } from "@/Components/DashBoard/barlist";
-import ListVentas from "@/Components/DashBoard/listuventas"
+import CardD from "@/components/DashBoard/cardD";
+import { BarListUsage } from "@/components/DashBoard/barlist";
+import ListVentas from "@/components/DashBoard/listuventas"
 import { useEffect, useState } from "react";
 import { CategoryBarList } from "@/Components/DashBoard/category";
 import { BarChart } from '@tremor/react';
@@ -79,11 +79,10 @@ export default function Page(){
       
       </section>
   )
-} */
-'use client'
+}
+ */
 export default function Page(){
   return(
     <h1>Nada por aqui</h1>
-    
   )
 }
