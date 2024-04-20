@@ -41,7 +41,7 @@ export default function AddButtonCliente(){
     
     toast({title:`${data.nombre} se agrego con exito`})
 
-    const newPost = await (await fetch(env.API_URL+'/api/clientes',{method: 'POST',body: JSON.stringify(data)})).json();
+    const newPost = await (await fetch('http://localhost:3000/api/clientes',{method: 'POST',body: JSON.stringify(data)})).json();
 
     
     dispatch(addClientes(newPost.body))

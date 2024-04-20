@@ -83,7 +83,7 @@ export function TableView() {
 
     if(clienteVenta){
 
-      const newSend = await (await fetch(env.API_URL+"/api/ventas",{method: "POST",body:JSON.stringify({info: productosventas,idCliente: clienteVenta.id,idUser: userLogin.id})})).json(); 
+      const newSend = await (await fetch("http://localhost:3000/api/ventas",{method: "POST",body:JSON.stringify({info: productosventas,idCliente: clienteVenta.id,idUser: userLogin.id})})).json(); 
       toast({title:"Venta agregada"});
 
       dispatch(clearVentas())
@@ -91,7 +91,7 @@ export function TableView() {
       
     }else{
 
-      const newSend = await (await fetch(env.API_URL+"/api/ventas",{method: "POST",body:JSON.stringify({info: productosventas,idUser: userLogin.id})})).json(); 
+      const newSend = await (await fetch("http://localhost:3000/api/ventas",{method: "POST",body:JSON.stringify({info: productosventas,idUser: userLogin.id})})).json(); 
       toast({title:"Venta agregada"});
 
       dispatch(clearVentas())
