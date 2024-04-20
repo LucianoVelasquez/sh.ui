@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Producto {
+  id Int @id @default(autoincrement())
+  precio Int
+  nombre String
+  stock Int
+  cantidadavender Int @default(0)
+  vendidos Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ventas Ventas[]
+  user User? @relation(fields: [userId],references: [id])
+  userId Int? @default(0)
+
+  categoria Categoria? @relation(fields: [categoriaId],references: [id])
+  categoriaId Int? @default(0) 
+  
+
+}
+
+model Ventas{
+  id Int @id @default(autoincrement())
+  precioTotal Int 
+  createdAt DateTime @default(now())
+  productos Producto[]
+
+  user User? @relation(fields: [userId],references: [id])
+  userId Int?
+
+  cliente Cliente? @relation(fields: [clienteId],references: [id])
+  clienteId Int? 
+  pago_pendiente Boolean?
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  email String @unique
+  username String
+  password String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  productos Producto[]
+  ventas Ventas[]
+  clientes Cliente[]
+
+  categorias Categoria[]
+}
+
+model Categoria {
+  id Int @id @default(autoincrement())
+  nombre String 
+  producto Producto[]
+
+  user User? @relation(fields: [userId],references: [id])
+  userId Int? 
+
+}
+
+//un cliente pertenece a un usuario, un usuario puede tener muchos clientes.
+model Cliente{
+  id Int @id @default(autoincrement())
+  nombre String 
+  deudaTotal Int
+  user User? @relation(fields: [userId], references: [id])
+  userId Int? 
+
+  ventas Ventas[]
+ }

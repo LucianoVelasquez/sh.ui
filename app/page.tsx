@@ -1,16 +1,19 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import ModeToggle from "@/components/themecontrollers/themecontroller";
 
-export default function Home() {
+import {getServerSession} from 'next-auth/next'
+import {authOptions} from '@/app/api/auth/[...nextauth]/route'
+import Menu from '@/components/Menu/menu';
+import Home from '@/components/Home/home';
+import ModeToggle from '@/components/themecontrollers/themecontroller';
+export default async function Page() {
+  
+  const infoData = await getServerSession(authOptions);
+   
+  
   return (
-    <div className="flex justify-center items-center w-full h-screen gap-x-5 bg-secondary-foreground">
-      <ModeToggle></ModeToggle>
-      <Button>Test 1</Button>
-      <Button variant={"destructive"} size={"lg"}>Test 1</Button>
-      <Button variant={"ghost"} size={"lg"}>Test 2</Button>
-      <Button variant={"outline"} size={"lg"}>Test 3</Button>
-      <Button variant={"secondary"} size={"lg"}>Test 4</Button>
-    </div>
+      <div data-theme="business" className="flex relative bg-background rounded-md shadow-lg">
+        <div className="absolute right-5 top-3" ><ModeToggle/></div>
+        <Menu infoUser={infoData!.user!.email}></Menu>
+        <Home></Home>
+      </div>
   );
 }
