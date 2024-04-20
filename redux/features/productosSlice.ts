@@ -38,6 +38,7 @@ export interface productosI {
   clienteVenta: ClienteVenta
   categorias: Categoria[]
   selectCategoria: string
+  url: string
 }
 
 const initialState : productosI = {
@@ -47,7 +48,8 @@ const initialState : productosI = {
   clientes: [],
   clienteVenta: {id: "",nombre:""},
   categorias: [],
-  selectCategoria: ""
+  selectCategoria: "",
+  url: ""
 }
 
 export const productosSlice = createSlice({
@@ -173,12 +175,14 @@ export const productosSlice = createSlice({
     },
     clearCategoria: (state)=>{
       state.selectCategoria = ""
+    },
+    addUrl: (state,action:PayloadAction<any>)=>{
+      state.url = action.payload
     }
-
   },
 })
 
 
-export const { removeSelected,removeProducById, addAllProducts,addProduct,updateProduct,addVentas,removeVentas,updateVentas,clearVentas,setLogin,closedSession,addClientes,loadingClientes,updateCliente,deleteClienteL,addClienteVenta,clearClienteVenta,loadingCategorias,updateCategoria,categoriaSelec,clearCategoria } = productosSlice.actions;
+export const { removeSelected,removeProducById, addAllProducts,addProduct,updateProduct,addVentas,removeVentas,updateVentas,clearVentas,setLogin,closedSession,addClientes,loadingClientes,updateCliente,deleteClienteL,addClienteVenta,clearClienteVenta,loadingCategorias,updateCategoria,categoriaSelec,clearCategoria,addUrl } = productosSlice.actions;
 
 export default productosSlice.reducer

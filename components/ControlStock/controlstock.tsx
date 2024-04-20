@@ -10,12 +10,12 @@ import { useEffect } from "react";
 import { env } from "process";
 
 export default function Stock(){
-  
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
   const dispatch = useDispatch();
   const productos = useAppSelector((state) => state.productosReducer.productos );
 
   const loadInfo = async () =>{
-    const data = await (await fetch('http://localhost:3000/api/producto',{ method: 'GET' })).json();
+    const data = await (await fetch(`${ApiUrl}api/producto`,{ method: 'GET' })).json();
     dispatch(addAllProducts(data));
   
   } 

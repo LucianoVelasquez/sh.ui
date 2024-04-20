@@ -22,6 +22,7 @@ import { env } from "process";
 export default function AddButtonCategoria(){
   const { toast } = useToast()
   const dispatch = useDispatch();
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
   const [open,setOpen] = useState(false)
   const [data,setData] = useState(
     {
@@ -41,7 +42,7 @@ export default function AddButtonCategoria(){
     
     
 
-    const newPost = await (await fetch('http://localhost:3000/api/producto/categoria',{method: 'POST',body: JSON.stringify(data)})).json();
+    const newPost = await (await fetch(`${ApiUrl}api/producto/categoria`,{method: 'POST',body: JSON.stringify(data)})).json();
 
     
     if(newPost.message.includes("La categoria ya existe")) return toast({variant:"destructive",title:"La categoria ya existe"});

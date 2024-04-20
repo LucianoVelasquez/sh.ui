@@ -21,6 +21,7 @@ import { env } from "process";
 export default function AddButtonCliente(){
   const { toast } = useToast()
   const userActivo = useAppSelector((state) => state.productosReducer.user);
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
   const dispatch = useDispatch();
   const [open,setOpen] = useState(false)
   const [data,setData] = useState(
@@ -41,7 +42,7 @@ export default function AddButtonCliente(){
     
     toast({title:`${data.nombre} se agrego con exito`})
 
-    const newPost = await (await fetch('http://localhost:3000/api/clientes',{method: 'POST',body: JSON.stringify(data)})).json();
+    const newPost = await (await fetch(`${ApiUrl}api/clientes`,{method: 'POST',body: JSON.stringify(data)})).json();
 
     
     dispatch(addClientes(newPost.body))

@@ -15,6 +15,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from "next/navigation"
 import { toast } from "@/components/ui/use-toast"
 import { env } from "process"
+import { useAppSelector } from "@/redux/hooks"
 
 export interface FormData{
   username: string
@@ -27,7 +28,7 @@ export default function Page() {
 
   const { register,handleSubmit, formState : {errors},setError } = useForm<FormData>();
   const router = useRouter()
-
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
   const sendData = handleSubmit(async (data) => {
     const regex = /^[a-zA-Z0-9._@-]+$/;
 
@@ -35,7 +36,7 @@ export default function Page() {
 
     if(!regex.test(data.email) || !data.email.includes("@") ) return toast({variant:"destructive",title:"Email incorrecto"});
   
-    const res = await fetch("http://localhost:3000/api/auth/register",{method: "POST",body: JSON.stringify(data),headers:{
+    const res = await fetch(`${ApiUrl}/api/auth/register`,{method: "POST",body: JSON.stringify(data),headers:{
       'Content-Type': 'application/json'
     }
     })

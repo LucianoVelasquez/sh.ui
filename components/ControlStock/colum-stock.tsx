@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useAppDispatch } from "@/redux/hooks"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { removeProducById,removeSelected } from '@/redux/features/productosSlice'
 import AddProducto from "@/components/ControlStock/addprodcuto"
 import Link from "next/link"
@@ -127,14 +127,14 @@ export const columnStock: ColumnDef<Payment>[] = [
     accessorKey: "accion",
     header: ({table}) => {
       /* const dispatch = useAppDispatch(); */
-      
+      const ApiUrl = useAppSelector((state) => state.productosReducer.url);
       const deleteItems = async () =>{
         let selected = table.getSelectedRowModel().rows.map((e)=> e.original);
        
         if(selected.length <= 1) return toast({variant:"destructive",title:"Selececione mas de uno o elimine individualmente"})
 
         selected.map(async e =>{
-          await fetch(`http://localhost:3000/api/producto/${e.id}`,{method: 'DELETE'});
+          await fetch(`${ApiUrl}api/producto/${e.id}`,{method: 'DELETE'});
         })
 
         /* dispatch(removeSelected(selected)); */
@@ -146,13 +146,13 @@ export const columnStock: ColumnDef<Payment>[] = [
     },
     id: "actions",
     cell: ({ row, table }) => {
-      
+      const ApiUrl = useAppSelector((state) => state.productosReducer.url);
       /* const dispatch = useAppDispatch(); */
       const payment = row.original
       /* Accion para eliminar un Elemento */
       const deleteItems = async () =>{
 
-        await (await fetch(`http://localhost:3000/api/producto/${payment.id}`,{method: 'DELETE'})).json();
+        await (await fetch(`${ApiUrl}api/producto/${payment.id}`,{method: 'DELETE'})).json();
         
         /* dispatch(removeProducById(payment.id)); */
         

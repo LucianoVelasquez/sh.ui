@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
-import { addAllProducts, setLogin,closedSession, loadingClientes,loadingCategorias } from '@/redux/features/productosSlice'
+import { addAllProducts, setLogin,closedSession, loadingClientes,loadingCategorias, addUrl } from '@/redux/features/productosSlice'
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from 'next-auth/react'
@@ -26,26 +26,28 @@ import {
 import { useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
 import icon from "@/public/icon.png"
-import { env } from "process";
 
 
-export default function Menu({ infoUser }:any) {
+export default function Menu({ infoUser,url }:any) {
   const dispatch = useDispatch();
   const menuIcon = usePathname();
   
+  const ApiUrl = url;
+  
   const loadInfo = async () =>{
-    const data = await (await fetch('http://localhost:3000/api/producto',{ method: 'GET' })).json();
-    const clientes = await (await fetch('http://localhost:3000/api/clientes',{ method: 'GET' })).json();
-    const categorias = await (await fetch('http://localhost:3000/api/producto/categoria/todas',{ method: 'GET' })).json();
+    const data = await (await fetch(`${ApiUrl}api/producto`,{ method: 'GET' })).json();
+    const clientes = await (await fetch(`${ApiUrl}api/clientes`,{ method: 'GET' })).json();
+    const categorias = await (await fetch(`${ApiUrl}api/producto/categoria/todas`,{ method: 'GET' })).json();
 
     if(infoUser != undefined){
-      const user = await (await fetch(`http://localhost:3000/api/auth/register/users/${infoUser}`,{method: "GET"})).json();
+      const user = await (await fetch(`${ApiUrl}api/auth/register/users/${infoUser}`,{method: "GET"})).json();
       dispatch(setLogin(user.body));
     }
     
     dispatch(loadingClientes(clientes))
     dispatch(addAllProducts(data));
     dispatch(loadingCategorias(categorias.body))
+    dispatch(addUrl(ApiUrl))
   }
 
   useEffect(()=>{

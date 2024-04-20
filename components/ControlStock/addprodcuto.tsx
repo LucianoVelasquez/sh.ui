@@ -27,6 +27,8 @@ export default function AddProducto(){
   const { toast } = useToast()
   const userLogin = useAppSelector((state) => state.productosReducer.user);
   const selectCategoria = useAppSelector((state)=> state.productosReducer.selectCategoria);
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
+
   const dispatch = useDispatch();
   const [open,setOpen] = useState(false)
   const [data,setData] = useState(
@@ -52,7 +54,7 @@ export default function AddProducto(){
     if(validation()) return toast({variant:"destructive",title:"Rellena correctamente los campos"});
 
     
-      const newPost = await (await fetch('http://localhost:3000/api/producto',{method: 'POST',body: JSON.stringify({data,userId:userLogin.id})})).json();
+      const newPost = await (await fetch(`${ApiUrl}api/producto`,{method: 'POST',body: JSON.stringify({data,userId:userLogin.id})})).json();
     
     
       if(newPost.message.includes("No exite el usuario")) return toast({variant:"destructive",title:"No existe sesion activa"});
