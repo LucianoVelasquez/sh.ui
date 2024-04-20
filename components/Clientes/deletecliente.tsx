@@ -17,20 +17,21 @@ import { Trash2 } from "lucide-react";
 import { deleteClienteL } from "@/redux/features/productosSlice";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { env } from "process";
+import { useAppSelector } from "@/redux/hooks";
 
 
 export default function DeleteCliente({ id,cantidad,nombre } : any){
   const { toast } = useToast()
   const dispatch = useDispatch();
   const [open,setOpen] = useState(false)
-
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
 
   /* Funcion para eliminar elementos */
   const sendData = async () =>{
 
     dispatch(deleteClienteL({nombre}))
 
-    const newUpdate = await (await fetch("http://localhost:3000/api/clientes",{method: "DELETE", body: JSON.stringify({nombre})})).json()
+    const newUpdate = await (await fetch(`${ApiUrl}api/clientes`,{method: "DELETE", body: JSON.stringify({nombre})})).json()
    
     toast({title:`El cliente ${nombre} se elimino con exito`})
     setOpen(!open)

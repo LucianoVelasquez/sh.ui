@@ -8,7 +8,8 @@ export async function POST(request: Request) {
   try {
     
     const  info : FormData = await request.json();
-
+    console.log(info);
+    
     const find = await prisma.user.findUnique({where:{ email: info.email}});
     
     if(find != undefined) throw new Error("Ya existe el usuario")

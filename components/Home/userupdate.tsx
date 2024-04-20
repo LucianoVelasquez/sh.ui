@@ -30,6 +30,7 @@ import { env } from "process"
 export default function UserUpdate(){
   const { toast } = useToast()
   const userActivo = useAppSelector((state) => state.productosReducer.user);
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
   const { register,handleSubmit, formState : {errors},setError } = useForm<FormData>();
   const dispatch = useDispatch();
   const router = useRouter()
@@ -44,7 +45,7 @@ export default function UserUpdate(){
   
   const loadingData = async () =>{
 
-    const user = await (await fetch('http://localhost:3000/api/clientes/1',{ method: 'GET' })).json();
+    const user = await (await fetch(`${ApiUrl}api/clientes/1`,{ method: 'GET' })).json();
     setData({nombre:user.username,email:user.email,passowrd:""})
   }
 
@@ -55,7 +56,7 @@ export default function UserUpdate(){
   /* Funcion para agregar nuevos elementos */
   const sendData = handleSubmit(async (data) =>{
 
-    const newPost = await (await fetch('http://localhost:3000/api/clientes/1',{method: 'PUT',body: JSON.stringify(data)})).json();
+    const newPost = await (await fetch(`${ApiUrl}api/clientes/1`,{method: 'PUT',body: JSON.stringify(data)})).json();
 
     toast({title:`${data.username} se agrego con exito`})
 

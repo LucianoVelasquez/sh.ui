@@ -11,11 +11,12 @@ import { env } from "process";
 
 export default function Ventas(){
   const productos = useAppSelector((state) => state.productosReducer.productos );
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
   const [carrito,setCarrito] = useState(false);
   const dispatch = useDispatch();
   
   const loadInfo = async () =>{
-    const data = await (await fetch('http://localhost:3000/api/producto',{ method: 'GET' })).json();
+    const data = await (await fetch(`${ApiUrl}api/producto`,{ method: 'GET' })).json();
     dispatch(addAllProducts(data));
     
   }
