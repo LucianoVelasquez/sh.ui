@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label"
 import { useForm } from 'react-hook-form'
 import { useRouter } from "next/navigation"
 import { toast } from "@/components/ui/use-toast"
+import { env } from "process"
 
 export interface FormData{
   username: string
@@ -34,7 +35,7 @@ export default function Page() {
 
     if(!regex.test(data.email) || !data.email.includes("@") ) return toast({variant:"destructive",title:"Email incorrecto"});
   
-    const res = await fetch("http://localhost:3000/api/auth/register",{method: "POST",body: JSON.stringify(data),headers:{
+    const res = await fetch(env.API_URL+"/api/auth/register",{method: "POST",body: JSON.stringify(data),headers:{
       'Content-Type': 'application/json'
     }
     })

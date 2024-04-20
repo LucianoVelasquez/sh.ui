@@ -7,6 +7,7 @@ import { TableView } from "@/components/Ventas/tabla-view-ventas";
 import { columnsVentas } from "@/components/Ventas/columns-ventas";
 import { addAllProducts } from "@/redux/features/productosSlice";
 import { useDispatch } from "react-redux";
+import { env } from "process";
 
 export default function Ventas(){
   const productos = useAppSelector((state) => state.productosReducer.productos );
@@ -14,7 +15,7 @@ export default function Ventas(){
   const dispatch = useDispatch();
   
   const loadInfo = async () =>{
-    const data = await (await fetch('http://localhost:3000/api/producto',{ method: 'GET' })).json();
+    const data = await (await fetch(env.API_URL+'/api/producto',{ method: 'GET' })).json();
     dispatch(addAllProducts(data));
     
   }

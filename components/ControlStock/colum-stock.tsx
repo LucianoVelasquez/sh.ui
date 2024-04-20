@@ -19,6 +19,7 @@ import AddProducto from "@/components/ControlStock/addprodcuto"
 import Link from "next/link"
 import UpdateProducto from "@/components/ControlStock/updateproduct"
 import { toast } from "@/components/ui/use-toast"
+import { env } from "process"
 
 
 // This type is used to define the shape of our data.
@@ -133,7 +134,7 @@ export const columnStock: ColumnDef<Payment>[] = [
         if(selected.length <= 1) return toast({variant:"destructive",title:"Selececione mas de uno o elimine individualmente"})
 
         selected.map(async e =>{
-          await fetch(`http://localhost:3000/api/producto/${e.id}`,{method: 'DELETE'});
+          await fetch(env.API_URL+`/api/producto/${e.id}`,{method: 'DELETE'});
         })
 
         /* dispatch(removeSelected(selected)); */
@@ -151,7 +152,7 @@ export const columnStock: ColumnDef<Payment>[] = [
       /* Accion para eliminar un Elemento */
       const deleteItems = async () =>{
 
-        await (await fetch(`http://localhost:3000/api/producto/${payment.id}`,{method: 'DELETE'})).json();
+        await (await fetch(env.API_URL+`/api/producto/${payment.id}`,{method: 'DELETE'})).json();
         
         /* dispatch(removeProducById(payment.id)); */
         

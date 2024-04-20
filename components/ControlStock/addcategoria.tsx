@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/redux/hooks";
 import { updateCategoria } from "@/redux/features/productosSlice";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { env } from "process";
 
 
 export default function AddButtonCategoria(){
@@ -40,7 +41,7 @@ export default function AddButtonCategoria(){
     
     
 
-    const newPost = await (await fetch('http://localhost:3000/api/producto/categoria',{method: 'POST',body: JSON.stringify(data)})).json();
+    const newPost = await (await fetch(env.API_URL+'/api/producto/categoria',{method: 'POST',body: JSON.stringify(data)})).json();
 
     
     if(newPost.message.includes("La categoria ya existe")) return toast({variant:"destructive",title:"La categoria ya existe"});

@@ -20,6 +20,7 @@ import { InputCategoria } from '@/components/ControlStock/inputcategoria';
 
 import AddButtonCategoria from "@/components/ControlStock/addcategoria";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { env } from "process"
 
 
 export default function AddProducto(){
@@ -51,7 +52,7 @@ export default function AddProducto(){
     if(validation()) return toast({variant:"destructive",title:"Rellena correctamente los campos"});
 
     
-      const newPost = await (await fetch('http://localhost:3000/api/producto',{method: 'POST',body: JSON.stringify({data,userId:userLogin.id})})).json();
+      const newPost = await (await fetch(env.API_URL+'/api/producto',{method: 'POST',body: JSON.stringify({data,userId:userLogin.id})})).json();
     
     
       if(newPost.message.includes("No exite el usuario")) return toast({variant:"destructive",title:"No existe sesion activa"});

@@ -26,6 +26,7 @@ import {
 import { useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
 import icon from "@/public/icon.png"
+import { env } from "process";
 
 
 export default function Menu({ infoUser }:any) {
@@ -33,12 +34,12 @@ export default function Menu({ infoUser }:any) {
   const menuIcon = usePathname();
   
   const loadInfo = async () =>{
-    const data = await (await fetch('http://localhost:3000/api/producto',{ method: 'GET' })).json();
-    const clientes = await (await fetch('http://localhost:3000/api/clientes',{ method: 'GET' })).json();
-    const categorias = await (await fetch('http://localhost:3000/api/producto/categoria/todas',{ method: 'GET' })).json();
+    const data = await (await fetch(env.API_URL+'/api/producto',{ method: 'GET' })).json();
+    const clientes = await (await fetch(env.API_URL+'/api/clientes',{ method: 'GET' })).json();
+    const categorias = await (await fetch(env.API_URL+'/api/producto/categoria/todas',{ method: 'GET' })).json();
 
     if(infoUser != undefined){
-      const user = await (await fetch(`http://localhost:3000/api/auth/register/users/${infoUser}`,{method: "GET"})).json();
+      const user = await (await fetch(env.API_URL+`/api/auth/register/users/${infoUser}`,{method: "GET"})).json();
       dispatch(setLogin(user.body));
     }
     

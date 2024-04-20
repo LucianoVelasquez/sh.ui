@@ -19,6 +19,7 @@ import { addClientes } from "@/redux/features/productosSlice";
 import { Cross2Icon } from "@radix-ui/react-icons"
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
+import { env } from "process"
 
  interface FormData{
   username: string
@@ -43,7 +44,7 @@ export default function UserUpdate(){
   
   const loadingData = async () =>{
 
-    const user = await (await fetch('http://localhost:3000/api/clientes/1',{ method: 'GET' })).json();
+    const user = await (await fetch(env.API_URL+'/api/clientes/1',{ method: 'GET' })).json();
     setData({nombre:user.username,email:user.email,passowrd:""})
   }
 
@@ -54,7 +55,7 @@ export default function UserUpdate(){
   /* Funcion para agregar nuevos elementos */
   const sendData = handleSubmit(async (data) =>{
 
-    const newPost = await (await fetch('http://localhost:3000/api/clientes/1',{method: 'PUT',body: JSON.stringify(data)})).json();
+    const newPost = await (await fetch(env.API_URL+'/api/clientes/1',{method: 'PUT',body: JSON.stringify(data)})).json();
 
     toast({title:`${data.username} se agrego con exito`})
 
