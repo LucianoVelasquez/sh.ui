@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider"
+import { ProviderStore } from "@/redux/providers";
+import { Toaster } from "@/components/ui/toaster";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,17 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            
+    <html  lang="en">
+      <body className={inter.className}>   
+      <ProviderStore>
+        <ThemeProvider attribute="class" defaultTheme="system">
+          
             {children}
-          </ThemeProvider></body>
+        </ThemeProvider>
+        <Toaster />
+      </ProviderStore>
+        
+      </body>
     </html>
   );
 }

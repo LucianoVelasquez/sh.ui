@@ -3,16 +3,18 @@ import Image from "next/image"
 import Link from "next/link"
 import imagen from "@/public/finance.svg"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-/* import { useDispatch } from "react-redux" */
-/* import { setLogin } from "@/redux/features/productosSlice"
- */import { useRouter } from "next/navigation"
+
+import { useDispatch } from "react-redux"
+import { setLogin } from "@/redux/features/productosSlice"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
-/* import { signIn } from 'next-auth/react' */
+import { signIn } from 'next-auth/react'
 import { toast } from "@/components/ui/use-toast"
- import ModeToggle from "@/components/themecontrollers/themecontroller";
+import ModeToggle from "@/components/themecontrollers/themecontroller"
+import { Label } from "@radix-ui/react-label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+
 
 
 interface FormLogin{
@@ -23,31 +25,31 @@ interface FormLogin{
 export default function Page() {
   const router = useRouter();
   const {register,formState : {errors},handleSubmit} = useForm<FormLogin>()
+  const dispatch = useDispatch();
 
-
-  const sendLogin = () => {
-   /*  const res = await signIn('credentials',{
+  const sendLogin = handleSubmit( async (data) => {
+    const res = await signIn('credentials',{
       email: data.email,
       password: data.password,
       redirect: false
     })
-     */
-   /*  if(res!.error) return toast({variant:"destructive",title:res?.error}) */
+    
+    if(res!.error) return toast({variant:"destructive",title:res?.error})
     
     
     toast({variant:"default",title:`Sesion exitosa`})
     
     router.push("/");
-  }
+  })
 
   const testTeo =  async () => {
-    /* const res = await signIn('credentials',{
+    const res = await signIn('credentials',{
       email: "vel166@gmail.com",
       password: "40166509",
       redirect: false
-    }) */
+    })
     
-    /* if(res!.error) return toast({variant:"destructive",title:res?.error}) */
+    if(res!.error) return toast({variant:"destructive",title:res?.error})
     
     /* dispatch(setLogin(true)) */
     toast({variant:"default",title:`Sesion de prueba`})
