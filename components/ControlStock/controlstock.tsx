@@ -7,6 +7,7 @@ import AddProducto from "@/components/ControlStock/addprodcuto";
 import { useDispatch } from "react-redux";
 import { addAllProducts } from "@/redux/features/productosSlice";
 import { useEffect } from "react";
+import { env } from "process";
 
 export default function Stock(){
   
@@ -14,7 +15,7 @@ export default function Stock(){
   const productos = useAppSelector((state) => state.productosReducer.productos );
 
   const loadInfo = async () =>{
-    const data = await (await fetch('http://localhost:3000/api/producto',{ method: 'GET' })).json();
+    const data = await (await fetch(env.API_URL+'/api/producto',{ method: 'GET' })).json();
     dispatch(addAllProducts(data));
   
   } 

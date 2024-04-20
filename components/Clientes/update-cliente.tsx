@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { FilePenLine } from "lucide-react";
 import { updateCliente } from "@/redux/features/productosSlice";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { env } from "process";
 
 
 export default function UpdateCliente({ id,cantidad,nombre } : any){
@@ -35,7 +36,7 @@ export default function UpdateCliente({ id,cantidad,nombre } : any){
     if(deudaTotal == 0) return toast({variant:"destructive",title:"No se puede pagar $0"})
     dispatch(updateCliente({nombre,deudaTotal}))
 
-    const newUpdate = await (await fetch("http://localhost:3000/api/clientes/",{method: "PUT", body: JSON.stringify({id,deudaTotal,nombre})})).json()
+    const newUpdate = await (await fetch(env.API_URL+"/api/clientes/",{method: "PUT", body: JSON.stringify({id,deudaTotal,nombre})})).json()
     
     toast({title:`${nombre} pago en efectivo $${deudaTotal.toLocaleString()}`})
     setOpen(!open)
