@@ -47,7 +47,7 @@ export default function UpdateProducto({ id,categoria } : {id : number,categoria
  /* Primero se carga la data a los inputs mediante el useState */
   const getData = async () =>{
     setOpen(!open)
-    const newData = await (await fetch(env.API_URL+`/api/producto/${id}`,{method: 'GET'})).json()
+    const newData = await (await fetch(`http://localhost:3000/api/producto/${id}`,{method: 'GET'})).json()
     setData({...newData,categoria:categoria})
     setTimeout(()=>{
       setLoading(!loading);
@@ -64,7 +64,7 @@ export default function UpdateProducto({ id,categoria } : {id : number,categoria
     if(validation()) return toast({variant:"destructive",title:"Rellena correctamente los campos"});
     
 
-    const newPost = await (await fetch(env.API_URL+`/api/producto/${id}`,{method: 'PUT',body: JSON.stringify(data)})).json();
+    const newPost = await (await fetch(`http://localhost:3000/api/producto/${id}`,{method: 'PUT',body: JSON.stringify(data)})).json();
     
 
     dispatch(updateProduct({...newPost.message,categoria:data.categoria}))

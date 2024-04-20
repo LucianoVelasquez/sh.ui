@@ -30,7 +30,7 @@ export default function DeleteCliente({ id,cantidad,nombre } : any){
 
     dispatch(deleteClienteL({nombre}))
 
-    const newUpdate = await (await fetch(env.API_URL+"/api/clientes",{method: "DELETE", body: JSON.stringify({nombre})})).json()
+    const newUpdate = await (await fetch("http://localhost:3000/api/clientes",{method: "DELETE", body: JSON.stringify({nombre})})).json()
    
     toast({title:`El cliente ${nombre} se elimino con exito`})
     setOpen(!open)
