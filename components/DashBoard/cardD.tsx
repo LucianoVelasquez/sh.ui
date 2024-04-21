@@ -1,12 +1,12 @@
-/* import {
+import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/Components/ui/Card/card"
-import { Progress } from "@/Components/ui/Progress/progress"
+} from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
 
 export default function CardD({totalSemana,title}:any) {
   return (
@@ -18,4 +18,3 @@ export default function CardD({totalSemana,title}:any) {
     </Card>
   )
 }
- */

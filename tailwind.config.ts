@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import colors from 'tailwindcss/colors';
 
 const config = {
   darkMode: ["class"],
@@ -7,6 +8,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './node_modules/@tremor/**/*.{js,ts,jsx,tsx}',
 	],
   prefix: "",
   theme: {
@@ -52,6 +54,63 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        tremor: {
+          brand: {
+            faint: colors.blue[50],
+            muted: colors.blue[200],
+            subtle: colors.blue[400],
+            DEFAULT: "hsl(var(--border))",
+            emphasis: colors.blue[700],
+            inverted: colors.white,
+          },
+          background: {
+            muted: colors.gray[50],
+            subtle: colors.gray[100],
+            DEFAULT: colors.white,
+            emphasis: colors.gray[700],
+          },
+          border: {
+            DEFAULT: "hsl(var(--border))",
+          },
+          ring: {
+            DEFAULT: colors.gray[200],
+          },
+          content: {
+            subtle: colors.gray[400],
+            DEFAULT: colors.gray[500],
+            emphasis: colors.gray[700],
+            strong: colors.gray[900],
+            inverted: colors.white,
+          },
+        },'dark-tremor': {
+          brand: {
+            faint: '#0B1229',
+            muted: colors.blue[950],
+            subtle: colors.blue[800],
+            DEFAULT: "hsl(var(--background))",
+            emphasis: colors.blue[400],
+            inverted: colors.blue[950],
+          },
+          background: {
+            muted: "hsl(var(--background))",
+            subtle: colors.gray[800],
+            DEFAULT: "hsl(var(--background))",
+            emphasis: colors.gray[300],
+          },
+          border: {
+            DEFAULT: "hsl(var(--border))",
+          },
+          ring: {
+            DEFAULT: "hsl(var(--border))",
+          },
+          content: {
+            subtle: colors.gray[600],
+            DEFAULT: colors.gray[500],
+            emphasis: colors.gray[200],
+            strong: colors.gray[50],
+            inverted: colors.gray[950],
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,7 +133,36 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  safelist: [
+    {
+      pattern:
+        /^(bg-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+      variants: ['hover', 'ui-selected'],
+    },
+    {
+      pattern:
+        /^(text-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+      variants: ['hover', 'ui-selected'],
+    },
+    {
+      pattern:
+        /^(border-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+      variants: ['hover', 'ui-selected'],
+    },
+    {
+      pattern:
+        /^(ring-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+    },
+    {
+      pattern:
+        /^(stroke-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+    },
+    {
+      pattern:
+        /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
+    },
+    ],
+  plugins: [require("tailwindcss-animate"),require('@headlessui/tailwindcss'), require('@tailwindcss/forms')],
 } satisfies Config
 
 export default config

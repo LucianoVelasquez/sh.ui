@@ -53,8 +53,8 @@ export default function Home(){
   ]
 
   return(
-    <div className="ml-1 flex justify-center items-center bg-primary-foreground w-full">
-       <div className="relative w-11/12 bg-b bg-background text-foreground rounded-md shadow-md">
+    <div className="ml-1 flex justify-center items-center bg-primary-foreground w-full ">
+       <div className="relative w-11/12 bg-b bg-background text-foreground rounded-md shadow-md mr-8">
         <Button variant={"outline"} className="absolute right-10 top-12" size={"sm"}><p className="text-sm">{fechaDeHoy.getDate()}/{fechaDeHoy.getMonth()+1}/{fechaDeHoy.getFullYear()}</p></Button>
         <h3 className="mt-10 ml-10 mb-10 text-5xl">{user.username? `Bienvenido ${user.username}` : "Cargando ..."}</h3>
         {

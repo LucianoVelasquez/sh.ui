@@ -27,10 +27,10 @@ export default function Page() {
   const {register,formState : {errors},handleSubmit} = useForm<FormLogin>()
   const dispatch = useDispatch();
   
-  console.log();
+  /* console.log();
   if(navigator.userAgent.includes("Windows")){
     console.log("Permitido")
-  }
+  } */
 
   const sendLogin = handleSubmit( async (data) => {
     const res = await signIn('credentials',{
