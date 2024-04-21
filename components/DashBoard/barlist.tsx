@@ -1,4 +1,4 @@
-/* "use client"
+"use client"
 import { BarList, Card } from '@tremor/react';
 import { useState } from 'react';
 
@@ -22,4 +22,4 @@ export function BarListUsage({tipoDato,title} : any) {
       }
     </Card>
   );
-} */
+}

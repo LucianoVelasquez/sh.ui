@@ -1,14 +1,16 @@
-/* 'use client'
+'use client'
 import CardD from "@/components/DashBoard/cardD";
 import { BarListUsage } from "@/components/DashBoard/barlist";
 import ListVentas from "@/components/DashBoard/listuventas"
 import { useEffect, useState } from "react";
-import { CategoryBarList } from "@/Components/DashBoard/category";
+import { CategoryBarList } from "@/components/DashBoard/category";
 import { BarChart } from '@tremor/react';
-import LoadingSpin from "@/Components/Loading/loading";
+import LoadingSpin from "@/components/Loading/loading";
+import { useAppSelector } from "@/redux/hooks";
 
 
 export default function Page(){
+  const ApiUrl = useAppSelector((state) => state.productosReducer.url);
   const [ventasPorCategoria,setVentasPorCategoria] = useState();
   const [ventasPorProducto,setVentasPorProducto] = useState<any>();
   const [ultimasVentas,setUltimasVentas] = useState<any>();
@@ -18,14 +20,14 @@ export default function Page(){
   const [loading,setLoading] = useState(true);
 
   const loadingInfo = async () =>{
-    const totalSemana = await (await fetch('http://localhost:3000/api/producto/vendidos/semana/total',{method: "GET"})).json();
-    const totalMes = await (await fetch('http://localhost:3000/api/producto/vendidos/mes/total',{method: "GET"})).json();
-    setUltimasVentas(await (await fetch('http://localhost:3000/api/producto/vendidos/semana',{method: "GET"})).json());
+    const totalSemana = await (await fetch(`${ApiUrl}api/producto/vendidos/semana/total`,{method: "GET"})).json();
+    const totalMes = await (await fetch(`${ApiUrl}api/producto/vendidos/mes/total`,{method: "GET"})).json();
+    setUltimasVentas(await (await fetch(`${ApiUrl}api/producto/vendidos/semana`,{method: "GET"})).json());
     setTotalMes(totalMes.body)
     setTotalSemana(totalSemana.body)
-    setVentasPorCategoria(await (await fetch('http://localhost:3000/api/producto/categoria',{method: "GET"})).json());
-    setVentasPorProducto(await (await fetch('http://localhost:3000/api/producto/vendidos',{method: "GET"})).json());
-    setClientes(await (await fetch('http://localhost:3000/api/clientes',{method: "GET"})).json())
+    setVentasPorCategoria(await (await fetch(`${ApiUrl}api/producto/categoria`,{method: "GET"})).json());
+    setVentasPorProducto(await (await fetch(`${ApiUrl}api/producto/vendidos`,{method: "GET"})).json());
+    setClientes(await (await fetch(`${ApiUrl}api/clientes`,{method: "GET"})).json())
     
   }
 
@@ -80,9 +82,4 @@ export default function Page(){
       </section>
   )
 }
- */
-export default function Page(){
-  return(
-    <h1>Nada por aqui</h1>
-  )
-}
+
