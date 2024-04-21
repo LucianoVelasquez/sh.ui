@@ -20,6 +20,10 @@ const config = {
       },
     },
     extend: {
+      screens:{
+        "1lg": "1090px",
+        "2lg": "1405px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

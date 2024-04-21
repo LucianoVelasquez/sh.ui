@@ -22,7 +22,7 @@ interface Carta{
 export default function ViewCard({title,imagen,sizew = 72,sizeh =  40,url = '/'} : Carta) {
   return (
     <Link href={url!}>
-      <Card className="hover:bg-accent text-accent-foreground transition-all duration-700 ease-in-out">
+      <Card className="hover:bg-accent text-accent-foreground transition-all duration-700 ease-in-out w-[200px]  1lg:w-[250px] 2lg:w-[337px]">
         <CardHeader className="pb-3">
           <span>{title}</span>
         </CardHeader>

@@ -80,7 +80,7 @@ export default function Home(){
                     target="_blank"
                      href="https://veldev.vercel.app/"
                    >
-                     <div className="flex border h-60 w-80 rounded-md justify-center hover:bg-accent text-accent-foreground transition-all duration-700 ease-in-out p-2">
+                     <div className="flex border h-60  rounded-md justify-center hover:bg-accent text-accent-foreground transition-all duration-700 ease-in-out p-2 w-[240px]  1lg:w-[250px] 2lg:w-[337px]">
                      <Image className="object-cover h-56 w-56" alt={"qr"} src={qr}></Image>
                      </div>
                    </Link>
