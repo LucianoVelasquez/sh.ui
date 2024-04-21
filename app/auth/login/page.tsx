@@ -14,6 +14,8 @@ import ModeToggle from "@/components/themecontrollers/themecontroller"
 import { Label } from "@radix-ui/react-label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
+import NoResposive from "@/components/Noresposive/noresposive"
 
 
 
@@ -25,12 +27,17 @@ interface FormLogin{
 export default function Page() {
   const router = useRouter();
   const {register,formState : {errors},handleSubmit} = useForm<FormLogin>()
+  const [isMovil,setIsMovil] = useState(false);
   const dispatch = useDispatch();
-  
-  /* console.log();
-  if(navigator.userAgent.includes("Windows")){
-    console.log("Permitido")
-  } */
+
+  useEffect(()=>{
+     
+    if(navigator.userAgent.includes("Android") || navigator.userAgent.includes("iPhone")){
+      setIsMovil(true)
+      console.log(navigator.userAgent);
+    } 
+  },[])
+
 
   const sendLogin = handleSubmit( async (data) => {
     const res = await signIn('credentials',{
@@ -63,6 +70,9 @@ export default function Page() {
   }
 
   return (
+    <>
+    {
+    !isMovil?
     <div className="relative w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
       <div className="absolute left-6 top-3" ><ModeToggle/></div>
       <div className="flex items-center justify-center py-12">
@@ -117,5 +127,9 @@ export default function Page() {
         />
       </div>
     </div>
+    :
+    <NoResposive></NoResposive>
+    }
+    </>
   )
 }

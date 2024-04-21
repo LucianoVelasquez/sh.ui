@@ -12,6 +12,7 @@ import qr from '@/public/qr-code.png'
 import Image from "next/image"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator"
 
 
 export default function Home(){
@@ -54,9 +55,10 @@ export default function Home(){
 
   return(
     <div className="ml-1 flex justify-center items-center bg-primary-foreground w-full ">
-       <div className="relative w-11/12 bg-b bg-background text-foreground rounded-md shadow-md mr-8">
+       <div className="relative w-11/12 bg-b bg-background text-foreground rounded-md shadow-md mr-8 ">
         <Button variant={"outline"} className="absolute right-10 top-12" size={"sm"}><p className="text-sm">{fechaDeHoy.getDate()}/{fechaDeHoy.getMonth()+1}/{fechaDeHoy.getFullYear()}</p></Button>
         <h3 className="mt-10 ml-10 mb-10 text-5xl">{user.username? `Bienvenido ${user.username}` : "Cargando ..."}</h3>
+        <Separator orientation="horizontal" className=" w-11/12 mx-10 mb-5"/>
         {
           time && (
             <section className="flex w-auto justify-center">

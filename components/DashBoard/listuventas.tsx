@@ -42,7 +42,7 @@ export default function ListVentas({ultimasVentas} : any) {
                       <div className="font-medium">{item.cliente? item.cliente.nombre : "Anonimo"}</div>
                     </TableCell>
                     <TableCell className="hidden sm:table-cell">
-                      <Badge className="text-xs text-nowrap" variant="secondary">
+                      <Badge className={`text-xs text-nowrap opacity-75 ${item.pago_pendiente? "bg-rose-500" : "bg-green-500"}`} >
                         {item.pago_pendiente? "Pendiente de pago": "Pago"}
                       </Badge>
                     </TableCell>

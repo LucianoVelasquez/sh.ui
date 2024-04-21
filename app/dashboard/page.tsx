@@ -7,6 +7,7 @@ import { CategoryBarList } from "@/components/DashBoard/category";
 import { BarChart } from '@tremor/react';
 import LoadingSpin from "@/components/Loading/loading";
 import { useAppSelector } from "@/redux/hooks";
+import { Separator } from "@radix-ui/react-separator";
 
 
 export default function Page(){
@@ -57,10 +58,11 @@ export default function Page(){
           <CategoryBarList tipoDato={ventasPorCategoria} title={"Productos mas vendidos por categoria"}></CategoryBarList>
           
           <BarListUsage tipoDato={clientes} title={"Clientes que mas deben"}></BarListUsage>
+          
           </div>
           {
             ventasPorProducto? <BarChart
-            className="opacity-70"
+            className="opacity-70 border-t"
             data={ventasPorProducto}
             index="name"
             categories={['Vendidos']}

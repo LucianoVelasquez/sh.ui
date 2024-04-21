@@ -70,7 +70,7 @@ export default function Menu({ infoUser,url }:any) {
             <Link
               target="_blank"
               href="https://veldev.vercel.app/"
-              className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-foreground text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+              className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary-foreground text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
             >
               {/* <Package2 className="h-4 w-4 transition-all group-hover:scale-110" /> */}
               <Image className="h-8 w-8" alt="icon" src={icon}></Image>
