@@ -26,6 +26,11 @@ export default function Page() {
   const router = useRouter();
   const {register,formState : {errors},handleSubmit} = useForm<FormLogin>()
   const dispatch = useDispatch();
+  
+  console.log();
+  if(navigator.userAgent.includes("Windows")){
+    console.log("Permitido")
+  }
 
   const sendLogin = handleSubmit( async (data) => {
     const res = await signIn('credentials',{

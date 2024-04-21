@@ -74,6 +74,8 @@ export default function UserUpdate(){
   })
 
   const closeView = () =>{
+    console.log(open);
+    setOpen(!open)
     router.push("/")
   }
 
@@ -85,9 +87,10 @@ export default function UserUpdate(){
         </DialogTrigger>
 
         <DialogContent className="sm:max-w-[425px]">
-          <div className="absolute right-4 top-4 rounded-sm opacity-70 cursor-pointer ">
+           <div onClick={()=> closeView()}  className="hover:bg-accent absolute right-4 top-4 rounded-sm opacity-70 cursor-pointer ">
               <Cross2Icon onClick={()=> closeView()} className="h-4 w-4" />
-            </div>
+            </div> 
+            
           <DialogHeader>
             <DialogTitle>Editar datos del Usuario</DialogTitle>
             <DialogDescription>
