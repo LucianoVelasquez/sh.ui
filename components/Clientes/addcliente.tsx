@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/redux/hooks";
 import { addClientes } from "@/redux/features/productosSlice";
 import { env } from "process";
+import { Cross2Icon } from "@radix-ui/react-icons";
 
 
 export default function AddButtonCliente(){
@@ -63,7 +64,9 @@ export default function AddButtonCliente(){
         </DialogTrigger>
 
         <DialogContent className="sm:max-w-[425px]">
-
+          <div className="absolute right-4 top-4 rounded-sm opacity-70 cursor-pointer hover:bg-accent">
+              <Cross2Icon onClick={()=> setOpen(!open)} className="h-4 w-4" />
+            </div>
           <DialogHeader>
             <DialogTitle>Agregar nuevo cliente</DialogTitle>
             <DialogDescription>
