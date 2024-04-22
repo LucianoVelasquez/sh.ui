@@ -12,7 +12,7 @@ export default function NoResposive(){
       <Image src={img} width={720} height={600} className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero"></Image>
 
       <div className="text-center lg:w-2/3 w-full">
-        <h1 className="title-font sm:text-3xl text-2xl mb-4 font-medium text-foreground text-wrap"> Actualmente, nuestro sitio web está en proceso de optimización para dispositivos móviles.</h1>
+        <h1 className="title-font sm:text-3xl text-2xl mb-4 font-medium text-foreground text-wrap"> Actualmente, nuestro sitio web está en proceso de optimización para este dispositivo.</h1>
         <p className="mb-8 leading-relaxed text-foreground opacity-75">Si deseas conocer más sobre mis proyectos y explorar ejemplos de otros trabajo, te invito a visitar los siguientes enlaces</p>
         <div className="flex justify-center gap-x-5">
         <Link target="_blank" href={"https://www.linkedin.com/in/lv-dev/"}><Linkedin>Linkeind</Linkedin></Link>
