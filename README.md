@@ -1,5 +1,7 @@
 # Proyecto A&G Ventas
 
+![Logo de Markdown](https://raw.githubusercontent.com/LucianoVelasquez/portfolio/refs/heads/main/src/utils/portada.png)
+
 A&G Ventas es una aplicación web diseñada para simplificar y optimizar la gestión de stock, ventas y clientes en pequeños negocios. Esta herramienta combina funcionalidad y facilidad de uso para brindar una solución a quienes desean llevar un control más organizado de su actividad comercial.
 
 ### Funcionalidades principales
