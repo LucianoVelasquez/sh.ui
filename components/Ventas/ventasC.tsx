@@ -25,13 +25,11 @@ export default function Ventas(){
   },[carrito])
 
   return(
-    <section className="flex flex-col ml-1 justify-start items-center bg-primary-foreground  w-full min-h-svh gap-8 rounded-md shadow-lg">
+    <section className="flex flex-col ml-1 justify-start items-center bg-muted w-full min-h-svh gap-8 rounded-md shadow-lg">
 
-      <h1 className="text-4xl mt-5 ">Gestion de Ventas</h1>
-      
-      <div className="flex flex-col bg-background min-h-96 w-11/12 rounded-md shadow-md mb-6">
+      <div className="flex flex-col bg-background min-h-96 w-11/12 rounded-md shadow-md mb-6 mt-[80px]">
         
-        <div className="flex justify-end w-full h-20">
+        <div className="flex justify-end w-full h-20 ">
           {carrito? 
             <Button className="mt-10 mr-12 mb-0 text-base" onClick={()=> setCarrito(!carrito)}><Search className="mr-2" size={18}/>Buscar productos</Button> 
           :

@@ -15,7 +15,8 @@ import {
   Settings,
   ShoppingCart,
   Users2,
-  LogOut 
+  LogOut ,
+  Database 
 } from "lucide-react"
 import {
   Tooltip,
@@ -25,7 +26,7 @@ import {
 } from "@/components/ui/tooltip"
 import { useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
-import icon from "@/public/icon.png"
+import icon from "@/public/qr-code.png"
 
 
 export default function Menu({ infoUser,url }:any) {
@@ -126,6 +127,19 @@ export default function Menu({ infoUser,url }:any) {
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="right">Clientes</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  href="/datos"
+                  
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg  ${menuIcon == "/datos"?"bg-accent text-accent-foreground": "text-muted-foreground"} transition-colors hover:text-foreground md:h-8 md:w-8`}
+                >
+                  <Database className="h-5 w-5" />
+                  <span className="sr-only">Base de datos</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right">Base de datos</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>

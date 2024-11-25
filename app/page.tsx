@@ -10,7 +10,7 @@ export default async function Page() {
   const infoData = await getServerSession(authOptions);
   
   const ApiUrl = process.env.URL;
-  console.log(ApiUrl);
+  
   return (
       <div data-theme="business" className="flex relative bg-background rounded-md shadow-lg">
         <div className="absolute right-5 top-3" ><ModeToggle/></div>

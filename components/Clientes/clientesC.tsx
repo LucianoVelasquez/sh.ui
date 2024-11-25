@@ -8,9 +8,9 @@ export default function Clientes(){
   
   return(
     <>
-      <h1 className="text-4xl mt-5 ">Control de Clientes</h1>
+      
 
-      <div className="bg-background min-h-96 w-11/12 rounded-md shadow-md mb-6">
+      <div className="bg-background  min-h-96 w-11/12 rounded-md shadow-md mt-[80px]">
         
         <TablaDataClientes columns={columnsClientes} data={clientes}></TablaDataClientes>
       </div> 

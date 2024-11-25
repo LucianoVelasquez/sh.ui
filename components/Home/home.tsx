@@ -7,6 +7,7 @@ import imagen from '@/public/production.svg'
 import anality2 from '@/public/anality2.svg'
 import userimg from '@/public/user-status.svg'
 import tra from '@/public/transaction.svg'
+import dbimg from '@/public/Database.svg'
 import setting from '@/public/settings.svg'
 import qr from '@/public/qr-code.png'
 import Image from "next/image"
@@ -45,7 +46,7 @@ export default function Home(){
       url: "/clientes"
     },
     {
-      title: "Ir a Estadisticas",
+      title: "Ir a Dashboard",
       imagen: anality2,
 
       url: "/dashboard"
@@ -54,8 +55,8 @@ export default function Home(){
   ]
 
   return(
-    <div className="ml-1 flex justify-center items-center bg-primary-foreground w-full ">
-       <div className="relative w-11/12 bg-b bg-background text-foreground rounded-md shadow-md mr-8 ">
+    <div className="ml-1 flex justify-center items-center bg-muted w-full ">
+       <div className="relative w-11/12 bg-background text-foreground rounded-md shadow-md mr-8 dark:border dark:shadow-2xl">
         <Button variant={"outline"} className="absolute right-10 top-12" size={"sm"}><p className="text-sm">{fechaDeHoy.getDate()}/{fechaDeHoy.getMonth()+1}/{fechaDeHoy.getFullYear()}</p></Button>
         <h3 className="mt-10 ml-10 mb-10 text-5xl">{user.username? `Bienvenido ${user.username}` : "Cargando ..."}</h3>
         <Separator orientation="horizontal" className=" w-11/12 mx-10 mb-5"/>
@@ -73,21 +74,7 @@ export default function Home(){
            </div>
  
            <div className="flex justify-center m-1 rounded gap-y-5 p-5 flex-wrap w-1/3 mb-10">
-             <TooltipProvider>
-               <Tooltip >
-                 <TooltipTrigger asChild>
-                   <Link
-                    target="_blank"
-                     href="https://veldev.vercel.app/"
-                   >
-                     <div className="flex border h-60  rounded-md justify-center hover:bg-accent text-accent-foreground transition-all duration-700 ease-in-out p-2 w-[240px]  1lg:w-[250px] 2lg:w-[337px]">
-                     <Image className="object-cover h-56 w-56" alt={"qr"} src={qr}></Image>
-                     </div>
-                   </Link>
-                 </TooltipTrigger>
-                 <TooltipContent side="top">Conoce mas sobre mi</TooltipContent>
-               </Tooltip>
-             </TooltipProvider>  
+             <ViewCard key={1} title={"Ir a Base de datos"} imagen={dbimg} url="/datos"></ViewCard>
              <ViewCard title="Opciones" url="/clientes/update"  imagen={setting}/>
            </div> 
        </section>

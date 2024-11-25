@@ -32,17 +32,17 @@ export function NavHeader() {
 
   
   return (
-    <Breadcrumb>
+    <Breadcrumb >
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink>
-            <Link href="/">Inicio</Link>
+            <Link  href="/">Inicio</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink>
-            <Link href={`${path}`}>{newPath}</Link>
+            <Link  href={`${path}`}>{newPath}</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>

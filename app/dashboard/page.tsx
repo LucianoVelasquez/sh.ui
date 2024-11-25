@@ -43,7 +43,7 @@ export default function Page(){
     Intl.NumberFormat('us').format(number).toString();
 
   return(
-    <section className=" flex ml-1 justify-start items-center bg-primary-foreground w-full min-h-svh rounded-md shadow-lg">
+    <section className=" flex ml-1 justify-start items-center bg-muted w-full min-h-svh rounded-md shadow-lg">
       
       
       <div className="flex flex-col justify-center items-center w-10/12 gap-x-1">
@@ -62,11 +62,11 @@ export default function Page(){
           </div>
           {
             ventasPorProducto? <BarChart
-            className="opacity-70 border-t"
+            className="opacity-70 border-t dark:border rounded-md"
             data={ventasPorProducto}
             index="name"
             categories={['Vendidos']}
-            colors={['rose']}
+            colors={['blue']}
             valueFormatter={dataFormatter}
             yAxisWidth={62}
             onValueChange={(v) => console.log(v)}

@@ -26,11 +26,11 @@ export default function Stock(){
 
 
   return(
-    <section className="flex flex-col ml-1 justify-start items-center bg-primary-foreground  w-full min-h-svh gap-8 rounded-md shadow-lg">
+    <section className="flex flex-col ml-1 justify-start items-center bg-muted  w-full min-h-svh gap-8 rounded-md shadow-lg">
 
-      <h1 className="text-4xl mt-5 ">Control de Stock</h1>
+      
 
-      <div className="bg-background min-h-96 w-11/12 rounded-md shadow-md mb-6">
+      <div className="bg-background min-h-96 w-11/12 rounded-md shadow-md mb-6 mt-[80px]">
         
         <DataTable columns={columnStock} data={productos}></DataTable>
       </div>

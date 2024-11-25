@@ -1,7 +1,31 @@
+# Proyecto A&G Ventas
+
+A&G Ventas es una aplicación web diseñada para simplificar y optimizar la gestión de stock, ventas y clientes en pequeños negocios. Esta herramienta combina funcionalidad y facilidad de uso para brindar una solución a quienes desean llevar un control más organizado de su actividad comercial.
+
+### Funcionalidades principales
+
+#### Gestión de stock:
+- Controla la cantidad de productos disponibles en tiempo real.
+- Actualiza automáticamente el inventario tras cada venta.
+- Permite registrar nuevas entradas de productos.
+
+#### Administración de ventas:
+- Registra cada transacción realizada en el negocio.
+- Ofrece una visualización clara de los ingresos semanales y mensuales.
+
+#### Cuentas corrientes de clientes:
+- Lleva un registro de los saldos de cada cliente.
+- Facilita el seguimiento de deudas y pagos pendientes.
+
+#### Reportes y estadísticas:
+- Proporciona gráficos y tablas para analizar las tendencias de ventas.
+- Identifica a los clientes con deudas activas de forma rápida.
 
 
-# Getting Started
-Adding Environment Variables
+
+
+# Comenzando
+Agregando Variables de Entorno
 ```bash
 URL="http://localhost:3000/"
 NEXTAUTH_URL="http://localhost:3000/"
@@ -9,7 +33,7 @@ NEXTAUTH_SECRET=nA/r/IUYm5r7U2xTnnqXyt1vA+AmR+GwFIvkHdaCkaI=
 DATABASE_URL="postgres..."
 ```
 
-First, run the development server:
+Primero, ejecuta el servidor de desarrollo:
 
 ```bash
 npm run dev
@@ -20,10 +44,9 @@ pnpm dev
 # or
 bun dev
 ```
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-# Developed with
+# Desarrollado con
 
 ## Frontend
 - **Typescript**: [Documentación oficial](https://www.typescriptlang.org/)
@@ -39,7 +62,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Database
 - **PostgreSQL**: [Documentación oficial](https://www.postgresql.org/)
 
-# For doubts or queries
+# Por dudas o consultas
 - [Linkedin](https://www.linkedin.com/in/lv-dev/) 
 - [Portafolio](https://veldev.vercel.app/) 
 

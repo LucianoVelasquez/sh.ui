@@ -67,7 +67,7 @@ export function TablaDataClientes<TData, TValue>({
   return (
     <div className="flex flex-col justify-center items-center">
 
-       <div className="relative flex justify-center items-center bg-background gap-2 bg- h-24 w-11/12 rounded-md shadow-md mt-4">
+       <div className="relative dark:border dark:shadow-2xl flex justify-center items-center bg-background gap-2 bg- h-24 w-11/12 rounded-md shadow-md mt-4">
           <Input value={(table.getColumn("nombre")?.getFilterValue() as string) ?? ""}
           onChange={(event) => 
             table.getColumn("nombre")?.setFilterValue(event.target.value)  

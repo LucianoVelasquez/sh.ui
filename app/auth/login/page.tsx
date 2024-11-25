@@ -102,10 +102,10 @@ export default function Page() {
               <Input placeholder="********" {...register("password",{required:{value:true,message:"Este campo es obligatorio"}})} id="password" type="password" required />
               { errors.password &&  <span className="text-xs text-red-500">{errors.password.message}</span>}
             </div>
-            <Button onClick={()=> sendLogin()} type="submit" className="w-full">
+            <Button onClick={()=> sendLogin()} type="submit" className="w-full text-background dark:text-foreground hover:text-foreground">
               Iniciar sesión
             </Button>
-            <Button onClick={()=> testTeo()} type="submit" className="w-full bg-green-700 text-secondary-foreground hover:text-secondary">
+            <Button onClick={()=> testTeo()} type="submit" className="w-full bg-green-700 text-background dark:text-foreground hover:text-foreground">
               Usuario de Prueba
             </Button>
           </div>
@@ -117,13 +117,13 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="hidden bg-muted lg:block">
+      <div className="hidden bg-muted lg:block ">
         <Image
-          src={imagen}
+          src="/Order.svg"
           alt="Image"
           width="1920"
           height="1080"
-          className="h-full w-full object-cover dark:brightness-[1] dark:grayscale"
+          className="h-full w-full object-cover "
         />
       </div>
     </div>

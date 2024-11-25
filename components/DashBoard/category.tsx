@@ -13,7 +13,7 @@ export function CategoryBarList({tipoDato,title} : any) {
         <span>Cantidad</span>
       </p>
       {
-        tipoDato? <BarList data={tipoDato} className="mt-2" color="rose" /> : <h1 className='text-center'>Cargando ...</h1>
+        tipoDato? <BarList data={tipoDato} className="mt-2" color="blue" /> : <h1 className='text-center'>Cargando ...</h1>
       }
     </Card>
   );
